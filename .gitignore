@@ -1,3 +1,10 @@
+# storage
+storage/downloads/*
+storage/userdata/*
+storage/tmp/*
+storage/database-columns.txt
+
+
 # Logs
 logs
 *.log
