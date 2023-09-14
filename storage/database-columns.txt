@@ -1,0 +1,5 @@
+CREATE table users (
+  username PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  faceDescriptor BLOB
+);

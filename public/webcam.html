@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <video id="video" width="640" height="480" autoplay loop</video>
+    <canvas id="canvas" width="640" height="480"</canvas>
+  </body>
+  <style>
+#video {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+  </style>
+  <script src="/webcam.js" type="module"></script>
+</html>

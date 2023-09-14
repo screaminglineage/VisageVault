@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Page</title>
+    <link rel="stylesheet" href="css/styles_download.css">
+</head>
+<body>
+    <h1>Choose File to Download</h1>
+    <div class="download-container">
+    <form action="/download" method="POST" id="fileForm">
+        <ul id="fileList">
+            <!-- Files will be populated here -->
+        </ul>
+        <button type="submit">Download</button>
+        <br>
+    </form>
+        <button id="back-button" type="submit">Return Back to Homepage</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileList = document.getElementById("fileList");
+
+            // Fetch the list of available files from the server
+            fetch("/get-files")
+                .then(response => response.json()) // Assuming the server returns a JSON array of file names
+                .then(files => {
+                    files.data.forEach(file => {
+                        const listItem = document.createElement("li");
+                        const radioInput = document.createElement("input");
+                        radioInput.type = "radio";
+                        radioInput.name = "file";
+                        radioInput.value = file.id;
+                        const label = document.createElement("label");
+                        label.textContent = file.originalName;
+
+                        listItem.appendChild(radioInput);
+                        listItem.appendChild(label);
+                        fileList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching file list:", error);
+                });
+        });
+
+        // Go back to home button
+        document.getElementById("back-button").onclick = function () {
+            location.href = "/home";
+        };
+    </script>
+</body>
+</html>
